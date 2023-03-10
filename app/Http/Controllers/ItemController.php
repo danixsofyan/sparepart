@@ -21,7 +21,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        return view('item.create', compact('item'));
+        return view('item.create');
     }
 
     /**
@@ -30,7 +30,7 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'code'              => 'required',
+            'code'              => 'required|unique:items',
             'name'              => 'required',
             'selling_price'     => 'required',
             'purchase_price'    => 'required',
