@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
+use App\Models\Sale;
 use Illuminate\Http\Request;
 
 class SaleController extends Controller
@@ -11,7 +13,8 @@ class SaleController extends Controller
      */
     public function index()
     {
-        return view('sale');
+        $sale = Sale::all();
+        return view('sale.index', compact('sale'));
     }
 
     /**
@@ -19,7 +22,8 @@ class SaleController extends Controller
      */
     public function create()
     {
-        //
+        $item = Item::all();
+        return view('sale.create', compact('item'));
     }
 
     /**
