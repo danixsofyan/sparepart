@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('purchase_price');
             $table->string('unit');
             $table->string('category');
+            $table->integer('stock');
             $table->timestamps();
         });
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -11,7 +12,8 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('item');
+        $item = Item::all();
+        return view('item.index', compact('item'));
     }
 
     /**
@@ -19,7 +21,7 @@ class ItemController extends Controller
      */
     public function create()
     {
-        //
+        return view('item.create', compact('item'));
     }
 
     /**
@@ -27,7 +29,19 @@ class ItemController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'code'              => 'required',
+            'name'              => 'required',
+            'selling_price'     => 'required',
+            'purchase_price'    => 'required',
+            'unit'              => 'required',
+            'category'          => 'required',
+            'stock'             => 'required',
+        ]);
+
+        Item::create($request->all());
+
+        return redirect('/item')->with('status', 'Success');
     }
 
     /**
@@ -41,9 +55,10 @@ class ItemController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id, Request $request)
     {
-        //
+        $item = Item::find($id);
+        return view('item.edit', compact('item'));
     }
 
     /**
@@ -51,7 +66,21 @@ class ItemController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'code'              => 'required',
+            'name'              => 'required',
+            'selling_price'     => 'required',
+            'purchase_price'    => 'required',
+            'unit'              => 'required',
+            'category'          => 'required',
+            'stock'             => 'required',
+        ]);
+
+        $input = $request->all();
+        $item = Item::findOrFail($id);
+        $item->update($input);
+
+        return redirect('/item')->with('status', 'Updated');
     }
 
     /**
@@ -59,6 +88,7 @@ class ItemController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Item::destroy($id);
+        return redirect('/item')->with('status', 'Deleted');
     }
 }

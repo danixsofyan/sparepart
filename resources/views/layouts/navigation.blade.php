@@ -18,12 +18,12 @@
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ url('item') }}" :active="request()->is('item')">
-                        {{ __('Item') }}
+                        {{ __('Master barang') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ url('sale') }}" :active="request()->is('sale')">
-                        {{ __('Sale') }}
+                        {{ __('Penjualan') }}
                     </x-nav-link>
                 </div>
             </div>
