@@ -75,9 +75,6 @@
                                                     <th scope="col"
                                                         class="py-3.5 px-3 text-left text-sm font-semibold text-white">
                                                         Harga Total</th>
-                                                    <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-0">
-                                                        <span class="sr-only"></span>
-                                                    </th>
                                                 </tr>
                                             </thead>
                                             <tbody class="divide-y divide-gray-800">
@@ -92,30 +89,16 @@
                                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
                                                         {{$data->name_customer}}</td>
                                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                                                        {{$data->item_id}}
+                                                        {{$data->item_name}}
                                                     </td>
                                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
-                                                        {{$data->amount}}
+                                                        {{$data->qty}}
                                                     </td>
                                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
                                                         {{$data->unit_price}}
                                                     </td>
                                                     <td class="whitespace-nowrap py-4 px-3 text-sm text-gray-300">
                                                         {{$data->total_price}}
-                                                    </td>
-                                                    <td
-                                                        class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                                        <form method="POST"
-                                                            action="{{ url('/sale/') }}/{{ $data->id }}">
-                                                            <a href=" /item/{{$data->id}}/edit"
-                                                                class="text-indigo-400 hover:text-indigo-300">Edit</a>
-                                                            -
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit"
-                                                                class="text-indigo-400 hover:text-indigo-300 show_confirm"
-                                                                data-toggle="tooltip" title='Delete'>Delete</button>
-                                                        </form>
                                                     </td>
                                                 </tr>
                                                 @endforeach

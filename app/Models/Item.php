@@ -10,8 +10,8 @@ class Item extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function Sale()
+    public function SaleDetail()
     {
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(SaleDetail::class);
     }
 }
